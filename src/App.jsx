@@ -1,13 +1,19 @@
 import './App.css'
-import ProductCard from './components/productCard'
+import AdminPage from "../components/adminPage"
+
+
+
+
+
+
 
 function App() {
 
   return (
     <div>
-      <div></div>
-      
+      <AdminPage />
     </div>
+
   )
 }
 

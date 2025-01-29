@@ -1,5 +1,5 @@
 import './App.css'
-import AdminPage from "../components/adminPage"
+import { BrowserRouter, Routes } from 'react-router-dom'
 
 
 
@@ -10,9 +10,14 @@ import AdminPage from "../components/adminPage"
 function App() {
 
   return (
-    <div>
-      <AdminPage />
-    </div>
+
+    <BrowserRouter>
+      <Routes>
+
+      </Routes>
+
+    </BrowserRouter>
+
 
   )
 }

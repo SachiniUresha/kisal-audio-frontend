@@ -1,6 +1,7 @@
 import { GoGraph } from "react-icons/go";
 import { FaRegBookmark, FaRegUser } from "react-icons/fa6";
 import { MdOutlineSpeaker } from "react-icons/md";
+import {Routes, Route} from 'react-router-dom';
 
 
 
@@ -31,7 +32,11 @@ export default function AdminPage(){
           </button>
   
         </div>
-        <div className="w-full bg-red-900">
+        <div className="w-[calc(100vw-400px)] bg-red-900">
+          <Routes path="/*">
+            <Route path="/bookings" element={<h1>Bookings</h1>}/>
+
+          </Routes>
   
         </div>
         

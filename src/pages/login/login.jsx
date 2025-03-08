@@ -1,5 +1,6 @@
 
 
+import axios from "axios";
 import "./login.css";
 import {useState} from "react";
 
@@ -19,6 +20,17 @@ export default function LoginPage(){
         e.preventDefault();
         console.log("submitted");
         console.log(email, password);
+
+        axios.post("https://localhost:3000/api/users/login" , 
+        {
+            email:email,
+            password:password
+        }
+    ).then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
 
         
 

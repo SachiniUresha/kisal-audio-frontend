@@ -3,6 +3,8 @@
 import axios from "axios";
 import "./login.css";
 import {useState} from "react";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 export default function LoginPage(){
@@ -13,6 +15,8 @@ export default function LoginPage(){
     
     const[password, setPassword] = useState("");
 
+    const navigate =useNavigate();
+
     
     function handleOnSubmit(e){
         console.log("submitted");
@@ -21,15 +25,26 @@ export default function LoginPage(){
         console.log("submitted");
         console.log(email, password);
 
-        axios.post("https://localhost:3000/api/users/login" , 
+        axios.post("http://localhost:3000/api/users/login" , 
         {
             email:email,
             password:password
         }
     ).then((res)=>{
             console.log(res)
+            //alert("Login success")
+            toast.success("Login success");
+            const user = res.data.user;
+            if(user.role === "admin"){
+                //window.location.href="/admin"
+                navigate("/admin/");
+            }else{
+                //window.location.href="/"
+                navigate("/");
+            }
         }).catch((err)=>{
             console.log(err)
+            toast.error(err.response.data.error)
         })
 
         

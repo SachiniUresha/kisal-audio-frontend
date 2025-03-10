@@ -35,6 +35,8 @@ export default function LoginPage(){
             //alert("Login success")
             toast.success("Login success");
             const user = res.data.user;
+            localStorage.setItem("token", res.data.token);
+            
             if(user.role === "admin"){
                 //window.location.href="/admin"
                 navigate("/admin/");

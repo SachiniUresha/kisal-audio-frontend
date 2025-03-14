@@ -26,7 +26,7 @@ export default function UpdateItemPage() {
         try{
        
         //toast.success("Item Added")
-        const result = await axios.put("http://localhost:3000/api/products/updateProduct"+productKey,
+        const result = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/products/updateProduct/${productKey}`,
             {
                 key:productKey,
                 name:productName,

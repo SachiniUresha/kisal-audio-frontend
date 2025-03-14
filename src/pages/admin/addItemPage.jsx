@@ -22,7 +22,7 @@ export default function AddItemPage() {
         try{
        
         //toast.success("Item Added")
-        const result = await axios.post("http://localhost:3000/api/products/addProduct",
+        const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/products/addProduct`,
             {
                 key:productKey,
                 name:productName,
@@ -88,8 +88,8 @@ export default function AddItemPage() {
           onChange={(e) => setProductDimension(e.target.value)}
           className="border p-2 rounded"
         />
-        <textarea
-          type="text"
+        <text
+        type="text"
           placeholder="Product Description"
           value={productDescription}
           onChange={(e) => setProductDescription(e.target.value)}

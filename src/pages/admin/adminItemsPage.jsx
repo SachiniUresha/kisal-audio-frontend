@@ -14,7 +14,7 @@ export default function AdminItemsPage(){
 
         if(!itemsLoaded){
             const token = localStorage.getItem("token");
-            axios.get("http://localhost:3000/api/products/getProducts", {
+            axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/getProducts`, {
                 headers:{ Authorization: `Bearer ${token}` },
             }).then(
                 (res)=>{
@@ -75,3 +75,6 @@ export default function AdminItemsPage(){
         </div>
     )
 }
+
+//delete
+//upate

@@ -24,8 +24,11 @@ export default function LoginPage(){
         e.preventDefault();
         console.log("submitted");
         console.log(email, password);
+        const backendUrl = import.meta.env.VITE_BACKEND_URL;
+        console.log(backendUrl);
 
-        axios.post("http://localhost:3000/api/users/login" , 
+
+        axios.post(`${backendUrl}/api/users/login` , 
         {
             email:email,
             password:password
@@ -36,7 +39,7 @@ export default function LoginPage(){
             toast.success("Login success");
             const user = res.data.user;
             localStorage.setItem("token", res.data.token);
-            
+
             if(user.role === "admin"){
                 //window.location.href="/admin"
                 navigate("/admin/");

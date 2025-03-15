@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-export default function RegisterPage(){
+export default function RegisterPage(){   //need validtions
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");

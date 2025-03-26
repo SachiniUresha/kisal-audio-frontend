@@ -2,6 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import mediaUpload from "../../utils/mediaUpload.jsx"
 
 
 export default function AddItemPage() {
@@ -11,15 +12,47 @@ export default function AddItemPage() {
   const [productCategory, setProductCategory] = useState("Audio");
   const [productDimensions, setProductDimension] = useState("");
   const [productDescription, setProductDescription] = useState("");
+  const [productImages, setProductImages] = useState([]);
   const navigate =useNavigate();
 
   async function handleAddItem(){
-    console.log(productKey, productName, productPrice, productCategory, productDimensions, productDescription);
+    //console.log(productImages);
+    const promises =[];
+
+    //images
+    for(let i=0; i<productImages.length;i++){
+      console.log(productImages[i])
+      const promise = mediaUpload(productImages[i])
+      promises.push(promise)
+      if(i==5){
+        toast.error("You can only upload 5 images at a time")
+        break;
+      }
+    }
+
+    
+
+    
+
+    console.log(productKey,
+       productName,
+       productPrice,
+       productCategory,
+       productDimensions,
+       productDescription);
     const token = localStorage.getItem("token");
 
     if(token){
 
         try{
+
+          // Promise.all(promises).then((result)=>{
+          //   console.log(result)
+          // }).catch((err)=>{
+          //   toast.error(err)
+          // })
+
+          const imageUrls = await Promise.all(promises);
        
         //toast.success("Item Added")
         const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/products/addProduct`,
@@ -28,7 +61,8 @@ export default function AddItemPage() {
                 name:productName,
                 price:productPrice,
                 dimensions:productDimensions,
-                description:productDescription
+                description:productDescription,
+                image : imageUrls
             },{
                 headers: {
                     Authorization:"Bearer " + token
@@ -57,26 +91,26 @@ export default function AddItemPage() {
           placeholder="Product Key"
           value={productKey}
           onChange={(e) => setProductKey(e.target.value)}
-          className="border p-2 rounded"
+          className="w-full border p-2 rounded"
         />
         <input
           type="text"
           placeholder="Product Name"
           value={productName}
           onChange={(e) => setProductName(e.target.value)}
-          className="border p-2 rounded"
+          className="w-full border p-2 rounded"
         />
         <input
           type="number"
           placeholder="Product Price"
           value={productPrice}
           onChange={(e) => setProductPrice(e.target.value)}
-          className="border p-2 rounded"
+          className="w-full border p-2 rounded"
         />
         <select
           value={productCategory}
           onChange={(e) => setProductCategory(e.target.value)}
-          className="border p-2 rounded"
+          className="w-full border p-2 rounded"
         >
           <option value="Audio">Audio</option>
           <option value="Lights">Lights</option>
@@ -86,14 +120,19 @@ export default function AddItemPage() {
           placeholder="Product Dimensions"
           value={productDimensions}
           onChange={(e) => setProductDimension(e.target.value)}
-          className="border p-2 rounded"
+          className="w-full border p-2 rounded"
         />
-        <text
+        <input
         type="text"
           placeholder="Product Description"
           value={productDescription}
           onChange={(e) => setProductDescription(e.target.value)}
-          className="border p-2 rounded"
+          className="w-full border p-2 rounded"
+
+        />
+        <input type="file" multiple 
+          onChange={(e)=>{setProductImages(e.target.files)}}  
+          className="w-full p-2 border rounded" 
         />
         <button onClick={handleAddItem} className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
           Add

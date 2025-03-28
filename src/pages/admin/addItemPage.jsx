@@ -15,7 +15,7 @@ export default function AddItemPage() {
   const [productImages, setProductImages] = useState([]);
   const navigate =useNavigate();
 
-  async function handleAddItem(){
+  async function handleUpdateItem(){
     //console.log(productImages);
     const promises =[];
 
@@ -134,7 +134,7 @@ export default function AddItemPage() {
           onChange={(e)=>{setProductImages(e.target.files)}}  
           className="w-full p-2 border rounded" 
         />
-        <button onClick={handleAddItem} className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
+        <button onClick={handleUpdateItem} className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
           Add
         </button>
         <button onClick={()=>{ navigate("/admin/items")}} className="bg-red-600 text-white p-2 rounded hover:bg-red-700">

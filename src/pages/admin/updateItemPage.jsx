@@ -15,9 +15,31 @@ export default function UpdateItemPage() {
   const [productCategory, setProductCategory] = useState("location.state.category");
   const [productDimensions, setProductDimension] = useState("location.state.dimensions");
   const [productDescription, setProductDescription] = useState("location.state.description");
+  const [productImages, setProductImages] = useState([]);
   const navigate =useNavigate();
 
-  async function handleAddItem(){
+  async function handleUpdateItem(){
+
+    let updatingImages = location.state.image;
+
+    if(productImages.length>0){
+       
+      const promises = [];
+
+      for(let i=0; i<productImages.length;i++){
+        console.log(productImages[i])
+        const promise = mediaUpload(productImages[i])
+        promises.push(promise)
+        if(i==5){
+          toast.error("You can only upload 5 images at a time")
+          break;
+        }
+      }
+
+      updatingImages=await Promise.all(promises);
+
+    }
+
     console.log(productKey, productName, productPrice, productCategory, productDimensions, productDescription);
     const token = localStorage.getItem("token");
 
@@ -32,7 +54,8 @@ export default function UpdateItemPage() {
                 name:productName,
                 price:productPrice,
                 dimensions:productDimensions,
-                description:productDescription
+                description:productDescription,
+                image:updatingImages
             },{
                 headers: {
                     Authorization:"Bearer " + token
@@ -100,7 +123,11 @@ export default function UpdateItemPage() {
           onChange={(e) => setProductDescription(e.target.value)}
           className="border p-2 rounded"
         />
-        <button onClick={handleAddItem} className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
+         <input type="file" multiple 
+          onChange={(e)=>{setProductImages(e.target.files)}}  
+          className="w-full p-2 border rounded" 
+        />
+        <button onClick={handleUpdateItem} className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
           Update
         </button>
         <button onClick={()=>{ navigate("/admin/items")}} className="bg-red-600 text-white p-2 rounded hover:bg-red-700">

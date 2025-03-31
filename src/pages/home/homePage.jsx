@@ -1,10 +1,11 @@
 import Header from "../../components/header";
 import { Route, Routes } from "react-router-dom";
-import Contact from "./contacts"
-import Gallery from "./gallery"
-import Items from "./items"
-import Home from "./home"
+import Contact from "./contacts";
+import Gallery from "./gallery";
+import Items from "./items";
+import Home from "./home";
 import ErrorNotFound from "./error";
+import ProductOverview from "./productOverview";
 
 export default function HomePage(){
     return(
@@ -20,6 +21,7 @@ export default function HomePage(){
                 <Route path="/contacts" element={<Contact/>}></Route>
                 <Route path="/gallery" element={<Gallery/>}></Route>
                 <Route path="/items" element={<Items/>}></Route>
+                <Route path="/product/:key" element={<ProductOverview/>}></Route>
                 <Route path="/" element={<Home/>}></Route>
                 <Route path="/*" element={<ErrorNotFound/>}></Route>
 

@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useState } from "react";
-import ImageSlider from "../../components/imagesSlider";
-//import { addToCart, loadCart } from "../../utils/cart";
+import ImageSlider from "../../components/imageSlider.jsx";
+import { addToCart, loadCart } from "../../utils/cart.jsx";
 //import toast from "react-hot-toast";
 
 export default function ProductOverview(){
@@ -23,8 +23,9 @@ export default function ProductOverview(){
         }).catch((err)=>{
             console.error(err)
             setLoadingStatus("error")
-        })
-    })
+        });
+    }, []);
+    
     return(
         <div className="w-full h-full flex justify-center">
             {
@@ -48,6 +49,10 @@ export default function ProductOverview(){
                             <span className="font-medium">Dimensions: </span>{product.dimensions}
 
                         </div>
+                        <button className="mt-4 bg-accent text-white px-4 py-2 rounded-md" onClick={()=>{
+                            addToCart(product.key, 1);
+                            console.log(loadCart());
+                        }}>Add to Cart</button>
                     </div>
 
 

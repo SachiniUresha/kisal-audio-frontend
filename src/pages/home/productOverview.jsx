@@ -1,8 +1,7 @@
 import axios from "axios";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom"
-import { useState } from "react";
-import ImageSlider from "../../components/imagesSlider";
+import { useState, useEffect } from "react";
+import ImageSlider from "../../components/imageSlider.jsx";
 //import { addToCart, loadCart } from "../../utils/cart";
 //import toast from "react-hot-toast";
 
@@ -23,8 +22,8 @@ export default function ProductOverview(){
         }).catch((err)=>{
             console.error(err)
             setLoadingStatus("error")
-        })
-    })
+        });
+    }, []);
     return(
         <div className="w-full h-full flex justify-center">
             {
@@ -37,7 +36,7 @@ export default function ProductOverview(){
                 //loaded state
                 loadingStatus=="loaded" && (<div className=" w-full h-full flex justify-center items-center">
                     <div className="w-[49%] bg-red-900 h-full ">
-                        <ImageSlider images={product.image}/>
+                    <ImageSlider images={Array.isArray(product.image) ? product.image : [product.image]} />
                     </div>
                     <div className="w-[49%]  h-full flex flex-col items-center ">
                         <h1 className="text-3xl font-bold text-accent">{product.name}</h1>

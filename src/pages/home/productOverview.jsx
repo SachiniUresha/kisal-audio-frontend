@@ -25,7 +25,7 @@ export default function ProductOverview() {
 			});
 	}, []);
 	return (
-		<div className="w-full flex justify-center">
+		<div className="w-full p-[100px] h-full flex justify-center">
 			{loadingStatus == "loading" && (
 				<div className="w-full h-full flex justify-center items-center">
 					<div className="w-[70px] h-[70px] border-b-2 border-b-accent animate-spin rounded-full"></div>
@@ -43,7 +43,7 @@ export default function ProductOverview() {
 							{product.category} category
 						</h2>
 						<p className="text-gray-700 mt-4 text-center">{product.description}</p>
-						<p className="text-lg  text-green-500">Rs. {product.price.toFixed(2)}</p>
+						<p className="text-lg  text-green-500">LKR {product.price.toFixed(2)}</p>
 						<div className="mt-4 text-sm text-gray-600">
 							<span className="font-medium">Dimensions:</span>{" "}
 							{product.dimensions}

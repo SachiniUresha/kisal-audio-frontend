@@ -3,6 +3,7 @@ import "./login.css";
 import {useState} from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
 
 
 export default function LoginPage(){
@@ -15,6 +16,7 @@ export default function LoginPage(){
 
     const navigate =useNavigate();
 
+  
     
     function handleOnSubmit(e){
         console.log("submitted");
@@ -72,6 +74,7 @@ export default function LoginPage(){
                     setPassword(e.target.value)}}/>
                     
                     <button type="submit" className="my-8 w-[300px] h-[50px] bg-[#efac38] text-xl text-white rounded-lg "> Login </button>
+
 
             </div>
 

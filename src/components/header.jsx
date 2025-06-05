@@ -6,7 +6,7 @@ import MobileNavPanel from "./mobileNavPanel";
 
 export default function Header() {
 	const [navPanelOpen, setNavPanelOpen] = useState(false);
-  const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
 	return (
 		<header className="w-full  h-[70px] shadow-xl flex justify-center items-center relative bg-accent text-white">
 			<img
@@ -41,6 +41,7 @@ export default function Header() {
 					setNavPanelOpen(true);
 				}}
 			/>
+
       {token!=null&&<button className="hidden md:block absolute right-5 text-[24px]" onClick={()=>{
         localStorage.removeItem("token")
         window.location.href = "/login"

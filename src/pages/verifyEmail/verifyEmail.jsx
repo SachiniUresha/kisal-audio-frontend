@@ -18,6 +18,7 @@ export default function VerifyEmail(){
             console.error(err)
         })
     })
+    
     function handleVerifyEmail(){
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/verifyEmail`,{
             code : parseInt(otp)

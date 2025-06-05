@@ -5,11 +5,17 @@ import {Link, Routes, Route} from 'react-router-dom';
 import AdminItemsPage from "./adminItemsPage";
 import AddItemPage from "./addItemPage";
 import UpdateItemPage from "./updateItemPage";
-
+import AdminUsersPage from "./adminUsersPage";
+import AdminOrdersPage from "./adminOrdersPage";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 
 export default function AdminPage(){
+
+
+
     return(
         <div className='w-full h-screen flex'>
         <div className='w-[200px] h-full bg-green-200'>
@@ -19,25 +25,26 @@ export default function AdminPage(){
             Dashboard
           </button>
   
-          <Link to='/admin/bookings' className='w-full h-[40px] text-[25px] font-bold flex justify-center items-center       '>             
+          <Link to='/admin/orders' className='w-full h-[40px] text-[25px] font-bold flex justify-center items-center       '>             
           <FaRegBookmark />
   
-            Bookings
+            Orders
           </Link>
   
           <Link to='/admin/items' className='w-full h-[40px] text-[25px] font-bold    flex justify-center items-center   '>
             <MdOutlineSpeaker/>
           Items
           </Link>
-          <button className='w-full h-[40px] text-[25px] font-bold    flex justify-center items-center   '>
+          <Link className='w-full h-[40px] text-[25px] font-bold    flex justify-center items-center   ' to='/admin/users'>
           <FaRegUser/>
             Users
-          </button>
+          </Link>
   
         </div>
         <div className="w-[calc(100vw-200px)]">
           <Routes path="/*">
-            <Route path="/bookings" element={<h1>Bookings</h1>}/>
+            <Route path="/orders" element={<AdminOrdersPage/>}/>
+            <Route path="/users" element={<AdminUsersPage/>}/>
             <Route path="/items" element={<AdminItemsPage/>}/>
             <Route path="/items/add" element={<AddItemPage/>}/>
             <Route path="/items/edit" element={<UpdateItemPage/>}/>

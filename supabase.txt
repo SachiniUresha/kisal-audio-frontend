@@ -1,2 +1,9 @@
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6Zmt0YWxjemFsZnF3dXZ1cmt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwMzU3NjIsImV4cCI6MjA1NzYxMTc2Mn0.GLLOqFqaGZ2GhvVbuCt5WdBl6bSpqnc-5xSKDEwswj0 --> public anon
 https://qzfktalczalfqwuvurky.supabase.co --> project url
+
+Google Login-
+
+807779157914-h71nfftf52gs5cd6nn2fsooh31r54al4.apps.googleusercontent.com --> Client ID
+
+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 --> client secret
+

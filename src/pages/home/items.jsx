@@ -9,7 +9,7 @@ export default function Items(){
     const [items, setItems]=useState([]);
 
     useEffect(()=>{
-        if(state=="loading"){
+        if(state == "loading"){
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/getProducts`).then((res)=>{
             console.log(res.data);
             setItems(res.data);
@@ -20,7 +20,7 @@ export default function Items(){
         })
     }
 
-    },[])
+    },[]);
 
     return(
         <div className="w-full h-full flex flex-wrap justify-center pt-[50px]">

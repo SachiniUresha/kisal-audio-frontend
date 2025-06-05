@@ -6,7 +6,7 @@ import AdminItemsPage from "./adminItemsPage";
 import AddItemPage from "./addItemPage";
 import UpdateItemPage from "./updateItemPage";
 import AdminUsersPage from "./adminUsersPage";
-import AdminOrdersPage from "./adminOrdersPage";
+import AdminOrdersPage from "./adminBookingPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 

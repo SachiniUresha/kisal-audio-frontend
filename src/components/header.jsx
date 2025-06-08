@@ -10,7 +10,7 @@ export default function Header() {
 	return (
 		<header className="w-full  h-[70px] shadow-xl flex justify-center items-center relative bg-accent text-white">
 			<img
-				src="/logo.png"
+				src="public\logo.jpg"
 				alt="logo"
 				className="w-[60px] h-[60px] object-cover border-[3px] absolute left-1 rounded-full"
 			/>

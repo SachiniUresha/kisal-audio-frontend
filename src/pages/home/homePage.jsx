@@ -1,6 +1,7 @@
 import Header from "../../components/header";
+import Footer from "../../components/footer";
 import { Route, Routes } from "react-router-dom";
-import Contact from "./contacts";
+import Contact from "./contact";
 import Gallery from "./gallery";
 import Items from "./items";
 import Home from "./home";
@@ -12,15 +13,15 @@ import BookingPage from "./bookingPage";
 export default function HomePage(){
     return(
 
-        <>
+        <div className="flex flex-col min-h-screen">
 
             <Header/>
 
-            <div className="w-full h-[calc(100vh-100px)] flex justify-center items-center">
+            <div className="w-full flex-grow">
 
                 <Routes path="/*">
 
-                <Route path="/contacts" element={<Contact/>}></Route>
+                <Route path="/contact" element={<Contact/>}></Route>
                 <Route path="/gallery" element={<Gallery/>}></Route>
                 <Route path="/items" element={<Items/>}></Route>
                 <Route path="/booking" element={<BookingPage/>}/>
@@ -33,6 +34,9 @@ export default function HomePage(){
 
         </div>
 
-        </>
+        <Footer/>
+
+        </div>
+
     )
 }

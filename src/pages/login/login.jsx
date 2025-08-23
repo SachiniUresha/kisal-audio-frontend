@@ -115,10 +115,10 @@ export default function LoginPage() {
 
 
 
-          <button className="my-2 w-[300px] h-[40px] bg-[#efac38] text-xl text-white rounded-lg">
+          <button className="my-2 w-[300px] h-[40px] bg-[#efac38] text-xl text-white rounded-lg border-2">
             Login
           </button>
-          <button className="my-2 w-[300px] h-[40px] bg-[#efac38] text-xl text-white rounded-lg " onClick={googleLogin}>
+          <button className="my-2 w-[300px] h-[40px] bg-[#efac38] text-xl text-white rounded-lg border-2" onClick={googleLogin}>
 
             Login with Google
 
@@ -128,7 +128,7 @@ export default function LoginPage() {
       </form>
       
     </div>
-    <p class>
+    <p className="text-white text-sm mt-2">
         Kisal-Audio | All Rights Reserved | Designed by Sachini Weerakkody
       </p>
     </div>

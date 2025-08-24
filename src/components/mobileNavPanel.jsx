@@ -56,12 +56,12 @@ export default function MobileNavPanel(props) {
 
 						<div
 							onClick={() => {
-								goTo("/gallery");
+								goTo("/profile");
 							}}
 							className="text-[20px] text-accent m-1 p-2 flex items-center gap-2 cursor-pointer hover:bg-accent/10 rounded-md"
 						>
 							<MdPhotoLibrary className="text-2xl" />
-							Gallery
+							Profile
 						</div>                        
 
 						<div

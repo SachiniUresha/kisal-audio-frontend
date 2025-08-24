@@ -4,9 +4,9 @@ import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 
 export default function VerifyEmail(){
-    const token = localStorage.getItem("token")
-    const [otp,setOtp] = useState("")
-    const navigate = useNavigate()
+    const token = localStorage.getItem("token");
+    const [otp,setOtp] = useState("");
+    const navigate = useNavigate();
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users/sendOTP`,{
             headers:{
@@ -42,7 +42,7 @@ export default function VerifyEmail(){
                 <h1 className="text-2xl font-bold">Verify Email</h1>
                 <p className="text-gray-500">Please verify your email to continue</p>
                 <input type="number" placeholder="OTP" value={otp} onChange={(e)=>setOtp(e.target.value)} className="border p-2 rounded-lg w-[80%]"/>
-                <button onClick={handleVerifyEmail} className="bg-blue-500 text-white p-2 rounded-lg w-[80%]">Verify</button>
+                <button onClick={handleVerifyEmail} className="bg-blue-500 text-white p-2 rounded-lg w-[80%] my-4 text-lg">Verify</button>
             </div>
         </div>
     )

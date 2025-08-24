@@ -2,7 +2,7 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { Route, Routes } from "react-router-dom";
 import Contact from "./contact";
-import Gallery from "./gallery";
+import Profile from "./profile";
 import Items from "./items";
 import Home from "./home";
 import ErrorNotFound from "./error";
@@ -22,7 +22,7 @@ export default function HomePage(){
                 <Routes path="/*">
 
                 <Route path="/contact" element={<Contact/>}></Route>
-                <Route path="/gallery" element={<Gallery/>}></Route>
+                <Route path="/profile" element={<Profile/>}></Route>
                 <Route path="/items" element={<Items/>}></Route>
                 <Route path="/booking" element={<BookingPage/>}/>
                 <Route path="/product/:key" element={<ProductOverview/>}></Route>

@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 md:flex md:justify-between md:space-x-8">
         {/* Company Info */}
         <div className="mb-8 md:mb-0 md:w-1/3">
-          <h2 className="text-orange-500 text-2xl font-bold mb-4">Kisal Audio</h2>
+          <h2 className="text-500 text-accent text-2xl font-bold mb-4">Kisal Audio</h2>
           <p>
             Kisal Audio is your trusted partner for high-quality sound and lighting solutions. We bring life to your events with professional-grade equipment and expert service tailored to your needs.         
           </p>
@@ -30,7 +30,7 @@ export default function Footer() {
           <h3 className="text-white text-xl font-semibold mb-4">Contact Info</h3>
           <p className="mb-2">📍 No. 18, Galle Road, Colombo, Sri Lanka</p>
           <p className="mb-2">📞 +94 11 200 300, +94 11 200 400</p>
-          <p className="mb-2">✉️ info@kisalAudio.com</p>
+          <p className="mb-2">✉️ info@kisalaudio.com</p>
         </div>
       </div>
 

@@ -5,32 +5,28 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero Section with Overlay */}
+    
       <div
         className="relative w-full h-screen bg-cover bg-center text-white flex flex-col justify-center items-center px-4"
         style={{
           backgroundImage: `url("/home-bg.jpg")`,
         }}
       >
-        {/* Dark overlay */}
+        
         <div className="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
 
-        {/* Hero Content */}
+        
         <div className="relative z-10 text-center">
-          <p className="text-lg tracking-widest text-white/80 uppercase">
-            We made your
+          <p className="text-lg tracking-widest text-white/80 ">
+            Hear the Difference, Feel the Vibe
           </p>
-          <h1 className="text-5xl md:text-6xl font-extrabold mt-2">
-            EVENT MEMORABLE
-          </h1>
+         
+          <h1 className="text-5xl md:text-6xl font-extrabold mt-2 uppercase">Kisal Audio </h1>
           <p className="text-md md:text-lg mt-6 max-w-xl text-center text-white/90">
-            KV Audio delivers powerful sound and dazzling lights for events of
-            every size. Whether it's a small party or a large celebration,
-            count on us to elevate your experience with reliable gear and
-            professional service.
+            Kisal-Audio brings you the perfect blend of powerful sound and stunning lights to transform any occasion. From intimate gatherings to large-scale celebrations, we deliver quality, reliability, and an experience that resonates long after the event.
           </p>
           <button
-            onClick={() => navigate("/booking")}
+            onClick={() => navigate("/items")}
             className="mt-8 px-6 py-3 border-2 border-white rounded-full text-white hover:bg-white hover:text-purple-900 transition"
           >
             Rent Now
@@ -38,7 +34,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Services Section */}
+     
       <section className="py-16 px-4 bg-[#f4f4f5] text-center">
         <h2 className="text-3xl font-bold text-purple-900 mb-8">Our Services</h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -72,7 +68,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
       <section className="py-16 px-4 bg-white text-center">
         <h2 className="text-3xl font-bold text-purple-900 mb-8">Why Choose Us?</h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -106,23 +101,38 @@ export default function Home() {
       {/* Product Gallery Section */}
       <section className="py-16 px-4 text-center bg-[#f4f4f5]">
         <h2 className="text-3xl font-bold text-purple-900 mb-8">
-          Featured Equipment
+          Gallery
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <img
-            src="/assets/speaker.png"
+            src="../1.jpg"
             alt="Speaker"
-            className="rounded-xl shadow-md"
+            className="rounded-xl shadow-md w-[400px] h-[400px] object-cover"
           />
           <img
-            src="/assets/mixer.png"
+            src="../2.jpg"
             alt="Mixer"
-            className="rounded-xl shadow-md"
+            className="rounded-xl shadow-md w-[400px] h-[400px] object-cover"
           />
           <img
-            src="/assets/light.png"
+            src="../3.jpg"
             alt="Lighting"
-            className="rounded-xl shadow-md"
+            className="rounded-xl shadow-md w-[400px] h-[400px] object-cover"
+          />
+           <img
+            src="../4.jpg"
+            alt="Speaker"
+            className="rounded-xl shadow-md w-[400px] h-[400px] object-cover"
+          />
+          <img
+            src="../5.jpg"
+            alt="Mixer"
+            className="rounded-xl shadow-md w-[400px] h-[400px] object-cover"
+          />
+          <img
+            src="../6.jpg"
+            alt="Lighting"
+            className="rounded-xl shadow-md w-[400px] h-[400px] object-cover"
           />
         </div>
       </section>

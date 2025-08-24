@@ -8,14 +8,14 @@ export default function Header() {
 	const [navPanelOpen, setNavPanelOpen] = useState(false);
     const token = localStorage.getItem("token")
 	return (
-		<header className="w-full  h-[70px] shadow-xl flex justify-center items-center relative bg-accent text-white">
+		<header className="w-full fixed h-[70px] shadow-xl flex justify-center items-center bg-accent text-white z-50">
+			
 			<img
 				src="public\logo.jpg"
 				alt="logo"
 				className="w-[60px] h-[60px] object-cover border-[3px] absolute left-1 rounded-full"
 			/>
-			<h1 className="text-white text-xl font-bold ">Kisal-Audio</h1>
-			<div className="hidden w-[450px]  md:flex justify-evenly items-center">
+			<div className="hidden w-[400px]  md:flex justify-evenly items-center font-bold text-lg">
 				<Link to="/" className="hidden md:block text-[22px]  m-1">
 					Home
 				</Link>
@@ -44,7 +44,7 @@ export default function Header() {
 				}}
 			/>
 
-      {token!=null&&<button className="hidden md:block absolute right-5 text-[24px]" onClick={()=>{
+      {token!=null&&<button className="hidden md:block absolute right-5 text-[24px] font-bold text-lg" onClick={()=>{
         localStorage.removeItem("token")
         window.location.href = "/login"
       }}>

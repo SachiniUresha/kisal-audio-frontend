@@ -61,7 +61,7 @@ export default function RegisterPage(){   //need validtions
           </Link>
           </div>
 
-                <button type="submit" className="text-xl mt-2 border-2 rounded-lg w-[300px] h-[40px] text-white bg-[#efac38]">Register</button>
+                <button type="submit" className="text-xl mt-2 border-2 rounded-lg w-[300px] h-[40px] text-black bg-yellow-400 font-bold">Register</button>
 
             </div>
             </form>

@@ -14,19 +14,21 @@ export default function Header() {
 				alt="logo"
 				className="w-[60px] h-[60px] object-cover border-[3px] absolute left-1 rounded-full"
 			/>
+			<h1 className="text-white text-xl font-bold ">Kisal-Audio</h1>
 			<div className="hidden w-[450px]  md:flex justify-evenly items-center">
 				<Link to="/" className="hidden md:block text-[22px]  m-1">
 					Home
 				</Link>
 				<Link to="/contact" className="hidden md:block text-[22px]  m-1">
-					contact
+					Contact
 				</Link>
-				<Link to="/gallery" className="hidden md:block text-[22px]  m-1">
-					gallery
-				</Link>
+				
 				{/* items */}
 				<Link to="/items" className="hidden md:block text-[22px]  m-1">
 					Items
+				</Link>
+				<Link to="/profile" className="hidden md:block text-[22px]  m-1">
+					Profile
 				</Link>
 				<Link
 					to="/booking"

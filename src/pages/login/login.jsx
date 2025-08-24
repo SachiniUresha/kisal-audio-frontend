@@ -115,10 +115,10 @@ export default function LoginPage() {
 
 
 
-          <button className="my-2 w-[300px] h-[40px] bg-[#efac38] text-xl text-white rounded-lg border-2">
+          <button className="my-2 w-[300px] h-[40px] bg-yellow-400 text-xl text-black rounded-lg font-bold border-2">
             Login
           </button>
-          <button className="my-2 w-[300px] h-[40px] bg-[#efac38] text-xl text-white rounded-lg border-2" onClick={googleLogin}>
+          <button className="my-2 w-[300px] h-[40px] bg-yellow-400 text-xl text-black font-bold rounded-lg border-2" onClick={googleLogin}>
 
             Login with Google
 

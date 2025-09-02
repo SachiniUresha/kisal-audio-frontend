@@ -45,8 +45,16 @@ export default function UserProfile() {
         },
       })
       .then(() => {
+              //const updatedUser = res.data || formData;
+
+               setUser(formData);
+      setFormData(formData);
+
+            localStorage.setItem("user", JSON.stringify(formData));
+
+
         toast.success("Profile updated successfully!");
-        setUser(formData);
+        //setUser(formData);
         setEditMode(false);
       })
       .catch((err) => {

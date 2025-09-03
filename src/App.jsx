@@ -4,44 +4,46 @@ import AdminPage from './pages/admin/adminPage'
 import HomePage from './pages/home/homePage'
 import Testing from "./components/testing"
 import LoginPage from "./pages/login/login"
-import { Toaster } from 'react-hot-toast'
 import RegisterPage from './pages/register/register'
-import { GoogleOAuthProvider } from '@react-oauth/google'
 import VerifyEmail from './pages/verifyEmail/verifyEmail'
-
-
-
-
- 
+import { Toaster } from 'react-hot-toast'
+import { Auth0Provider } from "@auth0/auth0-react"
+import AuthCallBack from './pages/auth/AuthCallBack';
 
 
 function App() {
+  const onRedirectCallback = (appState) => {
+    window.history.replaceState(
+      {},
+      document.title,
+      appState?.returnTo || window.location.pathname
+    );
+  };
 
   return (
+    <Auth0Provider
+      domain={import.meta.env.VITE_AUTH0_DOMAIN}
+      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+      authorizationParams={{
+        redirect_uri: window.location.origin + "/callback",
+            audience: import.meta.env.VITE_AUTH0_AUDIENCE, // Add this
 
-    <GoogleOAuthProvider clientId="807779157914-h71nfftf52gs5cd6nn2fsooh31r54al4.apps.googleusercontent.com">
-
-
-    <BrowserRouter>
-
-    <Toaster
-    position='top-right'/>
-      <Routes path="/*">
-        <Route path="/testing" element={<Testing/>}/>
-        <Route path="/admin/*" element={<AdminPage/>}/>
-        <Route path="/*" element = {<HomePage/>}/>
-        <Route path="/login" element = {<LoginPage/>}/>
-        <Route path="/register" element={<RegisterPage/>}/>
-        <Route path="/verify-email" element={<VerifyEmail/>}/>
-
-
-
-      </Routes>
-
-    </BrowserRouter>
-    </GoogleOAuthProvider>
-
-
+      }}
+      onRedirectCallback={onRedirectCallback}
+    >
+      <BrowserRouter>
+        <Toaster position='top-right' />
+        <Routes>
+          <Route path="/testing" element={<Testing />} />
+          <Route path="/admin/*" element={<AdminPage />} />
+<Route path="*" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
+<Route path="/callback" element={<AuthCallBack />} />
+        </Routes>
+      </BrowserRouter>
+    </Auth0Provider>
   )
 }
 

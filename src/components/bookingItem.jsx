@@ -50,12 +50,12 @@ export default function BookingItem({ itemKey, qty, refresh }) {
 
 			{/* Product Details */}
 			<div className="flex flex-row items-center relative  w-full">
-				<h3 className="text-lg font-semibold text-accent">{item.name}</h3>
+				<h3 className="text-lg font-semibold text-white">{item.name}</h3>
 				<div className="flex absolute right-0 gap-4">
 					<p className="font-medium w-[70px] text-center">
 						{item.price.toFixed(2)}
 					</p>
-					<p className=" font-medium w-[40px] text-center relative flex justify-center items-center">
+					<p className=" font-medium w-[40px] text-center relative flex justify-center items-center text-white">
 						<button
 							className="absolute top-[-20px] hover:text-accent"
 							onClick={() => {
@@ -81,7 +81,7 @@ export default function BookingItem({ itemKey, qty, refresh }) {
 							<FaArrowDown />
 						</button>
 					</p>
-					<p className="text-lg font-semibold text-accent">
+					<p className="text-lg font-semibold text-white">
 						{(item.price * qty).toFixed(2)}
 					</p>
 				</div>

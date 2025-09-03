@@ -1,12 +1,12 @@
 export function loadCart(){
 
     let cart = localStorage.getItem("cart");
-    if(cart==null){    
+    if(!cart){    
         cart = {
             orderedItems : [],
-            days : 1,
-            startingdate :formatDate(new Date()),
-            endingdate  :formatDate(new Date()),
+            //days : 1,
+            //startingdate :formatDate(new Date()),
+            //endingdate  :formatDate(new Date()),
         }
         const cartString = JSON.stringify(cart);
         localStorage.setItem("cart", cartString);

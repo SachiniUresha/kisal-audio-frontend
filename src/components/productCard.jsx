@@ -56,7 +56,7 @@ export default function ProductCard({ item }) {
 
         <p className="text-gray-700 mt-4">{/* {item.description} */}</p>
         <div className="flex justify-between items-center mt-4">
-          <span className="text-lg font-bold text-green-500 my-4 mt-0">Rs. {item.price} / Day</span>
+          <span className="text-lg font-bold text-green-500 my-4 mt-0">Rs. {item.price} </span>
           <span
             className={`px-3 py-1 text-sm rounded-full my-4 mt-0 ${
               item.availability ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"

@@ -3,14 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function AuthCallBack() {
-  const { isAuthenticated } = useAuth0();
+  const { isLoading, isAuthenticated, error } = useAuth0();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/"); // Redirect to home after successful login
+        if (error) console.log("Auth0 error:", error);
+
+    if (!isLoading && isAuthenticated) {
+      navigate("/"); // Redirect after login
     }
-  }, [isAuthenticated, navigate]);
+  }, [isLoading, isAuthenticated, navigate]);
+
+    if (error) return <p>Login failed: {error.message}</p>;
+
 
   return <p>Logging in...</p>;
 }

@@ -10,7 +10,6 @@ import { Toaster } from 'react-hot-toast'
 import { Auth0Provider } from "@auth0/auth0-react"
 import AuthCallBack from './pages/auth/AuthCallBack';
 
-
 function App() {
   const onRedirectCallback = (appState) => {
     window.history.replaceState(
@@ -26,8 +25,7 @@ function App() {
       clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
       authorizationParams={{
         redirect_uri: window.location.origin + "/callback",
-            audience: import.meta.env.VITE_AUTH0_AUDIENCE, // Add this
-
+        audience: import.meta.env.VITE_AUTH0_AUDIENCE,
       }}
       onRedirectCallback={onRedirectCallback}
     >
@@ -36,11 +34,14 @@ function App() {
         <Routes>
           <Route path="/testing" element={<Testing />} />
           <Route path="/admin/*" element={<AdminPage />} />
-<Route path="*" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
-<Route path="/callback" element={<AuthCallBack />} />
+          <Route path="/callback" element={<AuthCallBack />} />
+          					<Route path="/*" element={<HomePage />} />
+
+
         </Routes>
       </BrowserRouter>
     </Auth0Provider>

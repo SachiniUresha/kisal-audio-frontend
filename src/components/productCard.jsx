@@ -51,7 +51,6 @@ export default function ProductCard({ item }) {
         <h2 className="text-2xl font-semibold text-gray-800">{item.name}</h2>
         <p className="text-gray-600 text-sm mt-2">{item.category}</p>
         <div className=" text-sm text-gray-600">
-          <span className="font-medium">Dimensions:</span> {item.dimensions}
         </div>
 
         <p className="text-gray-700 mt-4">{/* {item.description} */}</p>

@@ -63,7 +63,7 @@ export default function AdminItemsPage() {
 								<th className="p-3 border">Name</th>
 								<th className="p-3 border">Price</th>
 								<th className="p-3 border">Category</th>
-								<th className="p-3 border">Dimensions</th>
+								<th className="p-3 border">Description</th>
 								<th className="p-3 border">Availability</th>
 								<th className="p-3 border text-center">Actions</th>
 							</tr>
@@ -78,9 +78,9 @@ export default function AdminItemsPage() {
 								>
 									<td className="p-3 border">{product.key}</td>
 									<td className="p-3 border">{product.name}</td>
-									<td className="p-3 border">${product.price.toFixed(2)}</td>
+									<td className="p-3 border">Rs.{product.price.toFixed(2)}</td>
 									<td className="p-3 border">{product.category}</td>
-									<td className="p-3 border">{product.dimensions}</td>
+									<td className="p-3 border">{product.description}</td>
 									<td className="p-3 border">
 										<span
 											className={`px-2 py-1 rounded text-sm font-medium ${

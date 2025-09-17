@@ -29,7 +29,7 @@ export default function Home() {
             onClick={() => navigate("/items")}
             className="mt-8 px-6 py-3 border-2 border-white rounded-full text-white hover:bg-white hover:text-purple-900 transition"
           >
-            Rent Now
+            Shop Now
           </button>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 
 
@@ -34,12 +35,13 @@ export default function AdminItemsPage() {
 			setItems(items.filter((item) => item.key !== key));
 			const token = localStorage.getItem("token");
 			axios
-				.delete(`${import.meta.env.VITE_BACKEND_URL}/api/products/${key}`, {
+				.delete(`${import.meta.env.VITE_BACKEND_URL}/api/products/deleteProduct/${key}`, {
 					headers: { Authorization: `Bearer ${token}` },
 				})
 				.then((res) => {
 					console.log(res.data);
 					setItemsLoaded(false);
+					toast.success("Item deleted successfully");
 				})
 				.catch((err) => {
 					console.error(err);
@@ -61,7 +63,7 @@ export default function AdminItemsPage() {
 								<th className="p-3 border">Name</th>
 								<th className="p-3 border">Price</th>
 								<th className="p-3 border">Category</th>
-								<th className="p-3 border">Dimensions</th>
+								<th className="p-3 border">Description</th>
 								<th className="p-3 border">Availability</th>
 								<th className="p-3 border text-center">Actions</th>
 							</tr>
@@ -76,9 +78,9 @@ export default function AdminItemsPage() {
 								>
 									<td className="p-3 border">{product.key}</td>
 									<td className="p-3 border">{product.name}</td>
-									<td className="p-3 border">${product.price.toFixed(2)}</td>
+									<td className="p-3 border">Rs.{product.price.toFixed(2)}</td>
 									<td className="p-3 border">{product.category}</td>
-									<td className="p-3 border">{product.dimensions}</td>
+									<td className="p-3 border">{product.description}</td>
 									<td className="p-3 border">
 										<span
 											className={`px-2 py-1 rounded text-sm font-medium ${

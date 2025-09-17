@@ -190,12 +190,12 @@ export default function LoginPage() {
         const user = res.data.user;
         localStorage.setItem("token", res.data.token);
 
-        if (!user.emailVerified) {
+        /*if (!user.emailVerified) {
           navigate("/verify-email");
           return;
-        }
+        }*/
 
-        navigate(user.role === "admin" ? "/admin/" : "/");
+        navigate(user.role === "admin" ? "/admin" : "/");
       })
       .catch((err) => toast.error(err.response?.data?.error || "Login failed"));
   }

@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import mediaUpload from "../../utils/mediaUpload.jsx"
+import { BiCategory } from "react-icons/bi";
 
 
 export default function AddItemPage() {
@@ -60,6 +61,7 @@ export default function AddItemPage() {
                 key:productKey,
                 name:productName,
                 price:productPrice,
+                category:productCategory,
                 dimensions:productDimensions,
                 description:productDescription,
                 image : imageUrls
@@ -115,13 +117,7 @@ export default function AddItemPage() {
           <option value="Audio">Audio</option>
           <option value="Lights">Lights</option>
         </select>
-        <input
-          type="text"
-          placeholder="Product Dimensions"
-          value={productDimensions}
-          onChange={(e) => setProductDimension(e.target.value)}
-          className="w-full border p-2 rounded"
-        />
+        
         <input
         type="text"
           placeholder="Product Description"

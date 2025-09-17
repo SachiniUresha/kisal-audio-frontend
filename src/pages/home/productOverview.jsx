@@ -43,9 +43,8 @@ export default function ProductOverview() {
 							{product.category} category
 						</h2>
 						<p className="text-gray-700 mt-4 text-center">{product.description}</p>
-						<p className="text-lg  text-green-500">LKR {product.price.toFixed(2)}</p>
+						<p className="text-lg  text-green-500">Rs.{product.price.toFixed(2)}</p>
 						<div className="mt-4 text-sm text-gray-600">
-							<span className="font-medium">Dimensions:</span>{" "}
 							{product.dimensions}
 						</div>
 						<button

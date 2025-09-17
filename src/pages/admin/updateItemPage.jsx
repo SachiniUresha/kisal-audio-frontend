@@ -56,7 +56,7 @@ export default function UpdateItemPage() {
 		if (token) {
 			try {
 				const result = await axios.put(
-					`${import.meta.env.VITE_BACKEND_URL}/api/products/${productKey}`,
+					`${import.meta.env.VITE_BACKEND_URL}/api/products/updateProduct/${productKey}`,
 					{
 						name: productName,
 						price: productPrice,
@@ -74,7 +74,7 @@ export default function UpdateItemPage() {
 				toast.success(result.data.message);
 				navigate("/admin/items");
 			} catch (err) {
-				toast.error(err.response.data.error);
+				toast.error(err.response?.data?.message || "Update failed");
 			}
 		} else {
 			toast.error("You are not authorized to add items");

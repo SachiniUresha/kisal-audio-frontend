@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 
 
@@ -34,12 +35,13 @@ export default function AdminItemsPage() {
 			setItems(items.filter((item) => item.key !== key));
 			const token = localStorage.getItem("token");
 			axios
-				.delete(`${import.meta.env.VITE_BACKEND_URL}/api/products/${key}`, {
+				.delete(`${import.meta.env.VITE_BACKEND_URL}/api/products/deleteProduct/${key}`, {
 					headers: { Authorization: `Bearer ${token}` },
 				})
 				.then((res) => {
 					console.log(res.data);
 					setItemsLoaded(false);
+					toast.success("Item deleted successfully");
 				})
 				.catch((err) => {
 					console.error(err);

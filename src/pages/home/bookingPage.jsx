@@ -7,85 +7,60 @@ import toast from "react-hot-toast";
 export default function BuyingCartPage() {
   const [cart, setCart] = useState(loadCart());
   const [total, setTotal] = useState(0);
+  const [orders, setOrders] = useState([]);
 
-  // 🔹 This function refreshes cart
+  // 🔹 Refresh cart
   function reloadCart() {
     const newCart = loadCart();
     setCart(newCart);
   }
 
-  // 🔹 Calculate total based on current cart state
-  function calculateTotal(cartData) {
-
-    if (!cartData || !cartData.orderedItems?.length) {
+  // 🔹 Calculate total
+  useEffect(() => {
+    if (!cart || !cart.orderedItems?.length) {
       setTotal(0);
       return;
     }
-
-    const payload = {
-    orderedItems: cartData.orderedItems,
-    days: cartData.days || 1,
-    //startingDate: cartData.startingdate, // fix lowercase -> uppercase
-    //endingDate: cartData.endingdate
-  };
-
-    const token = localStorage.getItem("token"); 
-
-
-    axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, cartData, {
-        headers: { Authorization: `Bearer ${token}` },
-  })
-      .then((res) => {
-        console.log("Total response:", res.data);
-        setTotal(res.data.total);
-      })
-      .catch((err) => {
-        console.error(err);
-        setTotal(0);
-      });
-  }
-
-  // 🔹 Whenever cart changes, recalc total
-  useEffect(() => {
-    //calculateTotal(cart);
-    if (!cart || !cart.orderedItems?.length) {
-    setTotal(0);
-    return;
-  }
-
-  const fullTotal = cart.orderedItems.reduce(
-    (sum, item) => {
-    const price = Number(item.price) || 0; // convert to number, default 0
-    const qty = Number(item.qty) || 1;     // convert to number, default 0
-    return sum + price * qty;
-  },
-    0
-  );
-
-  setTotal(fullTotal);
+    const fullTotal = cart.orderedItems.reduce(
+      (sum, item) => sum + (Number(item.price) || 0) * (Number(item.qty) || 1),
+      0
+    );
+    setTotal(fullTotal);
   }, [cart]);
 
+  // 🔹 Fetch previous orders
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/orders/myOrders`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => setOrders(res.data.orders))
+      .catch((err) => toast.error("Failed to fetch previous orders"));
+  }, []);
+
+  // 🔹 Create order
   function handleOrderCreation() {
     const cartData = loadCart();
     const token = localStorage.getItem("token");
 
-     const payload = {
-    orderedItems: cartData.orderedItems,
-    days: cartData.days || 1,
-    //startingDate: cartData.startingdate,
-    //endingDate: cartData.endingdate
-  };
+    const payload = {
+      orderedItems: cartData.orderedItems,
+      days: cartData.days || 1,
+    };
 
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, payload, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res.data);
-        localStorage.removeItem("cart");
         toast.success("Order Created");
+        localStorage.removeItem("cart");
         reloadCart();
+        // Refresh previous orders
+        setOrders((prev) => [res.data.order, ...prev]);
       })
       .catch((err) => {
         console.error(err);
@@ -97,6 +72,7 @@ export default function BuyingCartPage() {
     <div className="w-full h-full flex flex-col items-center mt-10 p-20">
       <h1 className="text-2xl font-bold text-black">Your Cart</h1>
 
+      {/* Cart Items */}
       <div className="w-full flex flex-col items-center mt-4">
         {cart.orderedItems?.map((item) => (
           <BookingItem
@@ -109,12 +85,10 @@ export default function BuyingCartPage() {
         ))}
       </div>
 
+      {/* Total & Place Order */}
       <div className="w-full flex justify-center mt-4">
-        <p className="text-accent font-semibold">
-          Total: {total.toFixed(2)}
-        </p>
+        <p className="text-accent font-semibold">Total: {total.toFixed(2)}</p>
       </div>
-
       <div className="w-full flex justify-center mt-4">
         <button
           className="bg-accent text-white px-4 py-2 rounded-md"
@@ -122,6 +96,37 @@ export default function BuyingCartPage() {
         >
           Place Order
         </button>
+      </div>
+
+      {/* Previous Orders */}
+      <div className="w-full mt-10">
+        <h2 className="text-2xl font-bold mb-4">Previous Orders</h2>
+        {orders.length > 0 ? (
+          <ul className="space-y-3">
+            {orders.map((order) => (
+              <li
+                key={order._id}
+                className="p-4 border rounded-lg bg-gray-50"
+              >
+                <p>
+                  <strong>Order ID:</strong> {order.orderId}
+                </p>
+                <p>
+                  <strong>Total:</strong> Rs.{order.totalAmount.toFixed(2)}
+                </p>
+                <p>
+                  <strong>Status:</strong> {order.status}
+                </p>
+                <p>
+                  <strong>Ordered At:</strong>{" "}
+                  {new Date(order.orderDate).toLocaleString()}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-500">No previous orders yet.</p>
+        )}
       </div>
     </div>
   );

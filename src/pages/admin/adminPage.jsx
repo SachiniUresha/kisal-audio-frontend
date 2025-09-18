@@ -12,7 +12,7 @@ import DashboardPage from "./dashboard";
 export default function AdminPage() {
   const location = useLocation(); // Get current path
 
-  // Reusable class for nav links
+  
   const getLinkClasses = (path) =>
     `w-full py-3 flex items-center gap-4 justify-center font-bold rounded transition-all duration-300
      ${location.pathname === path
@@ -38,7 +38,7 @@ export default function AdminPage() {
             Kisal Audio
           </p>
           <span className="text-sm text-blue-100 font-medium italic opacity-90 mt-1 text-center leading-tight">
-            Sound & Light Equipment<br />Renting Platform
+            Sound & Light Equipments<br /> Online Store
           </span>
         </div>
 

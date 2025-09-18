@@ -25,12 +25,17 @@ export default function BuyingCartPage() {
     const payload = {
     orderedItems: cartData.orderedItems,
     days: cartData.days || 1,
-    startingDate: cartData.startingdate, // fix lowercase -> uppercase
-    endingDate: cartData.endingdate
+    //startingDate: cartData.startingdate, // fix lowercase -> uppercase
+    //endingDate: cartData.endingdate
   };
 
+    const token = localStorage.getItem("token"); 
+
+
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/getQuote`, cartData)
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, cartData, {
+        headers: { Authorization: `Bearer ${token}` },
+  })
       .then((res) => {
         console.log("Total response:", res.data);
         setTotal(res.data.total);
@@ -43,7 +48,22 @@ export default function BuyingCartPage() {
 
   // 🔹 Whenever cart changes, recalc total
   useEffect(() => {
-    calculateTotal(cart);
+    //calculateTotal(cart);
+    if (!cart || !cart.orderedItems?.length) {
+    setTotal(0);
+    return;
+  }
+
+  const fullTotal = cart.orderedItems.reduce(
+    (sum, item) => {
+    const price = Number(item.price) || 0; // convert to number, default 0
+    const qty = Number(item.qty) || 1;     // convert to number, default 0
+    return sum + price * qty;
+  },
+    0
+  );
+
+  setTotal(fullTotal);
   }, [cart]);
 
   function handleOrderCreation() {
@@ -53,12 +73,12 @@ export default function BuyingCartPage() {
      const payload = {
     orderedItems: cartData.orderedItems,
     days: cartData.days || 1,
-    startingDate: cartData.startingdate,
-    endingDate: cartData.endingdate
+    //startingDate: cartData.startingdate,
+    //endingDate: cartData.endingdate
   };
 
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/createOrder`, cartData, {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, payload, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -83,6 +103,7 @@ export default function BuyingCartPage() {
             itemKey={item.key}
             key={item.key}
             qty={item.qty}
+            price={item.price}
             refresh={reloadCart}
           />
         ))}

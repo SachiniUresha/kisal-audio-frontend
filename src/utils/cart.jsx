@@ -16,7 +16,7 @@ export function loadCart(){
      return cart;
 }
 
-export function addToCart(key, qty){
+export function addToCart(key, qty, price){
     const cart = loadCart();
     let found = false;
 
@@ -31,7 +31,7 @@ export function addToCart(key, qty){
 
     if(!found){
 
-        cart.orderedItems.push({key, qty});
+        cart.orderedItems.push({key, qty, price});
     }
     const cartString = JSON.stringify(cart);
     localStorage.setItem("cart", cartString);

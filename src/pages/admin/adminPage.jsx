@@ -7,6 +7,7 @@ import AddItemPage from "./addItemPage";
 import UpdateItemPage from "./updateItemPage";
 import AdminUsersPage from "./adminUsersPage";
 import AdminOrdersPage from "./adminBookingPage";
+import DashboardPage from "./dashboard";
 
 export default function AdminPage() {
   const location = useLocation(); // Get current path
@@ -66,6 +67,7 @@ export default function AdminPage() {
       {/* Main Content Area */}
       <div className="flex-1 bg-gray-100 p-6 overflow-y-auto">
         <Routes path="/*">
+          <Route path="/" element={<DashboardPage />} />
           <Route path="/orders" element={<AdminOrdersPage />} />
           <Route path="/users" element={<AdminUsersPage />} />
           <Route path="/items" element={<AdminItemsPage />} />

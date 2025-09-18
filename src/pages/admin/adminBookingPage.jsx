@@ -71,9 +71,7 @@ export default function AdminOrdersPage() {
 							<tr>
 								<th className="px-4 py-2 text-left">Order ID</th>
 								<th className="px-4 py-2 text-left">Email</th>
-								<th className="px-4 py-2 text-left">Days</th>
-								<th className="px-4 py-2 text-left">Starting Date</th>
-								<th className="px-4 py-2 text-left">Ending Date</th>
+								
 								<th className="px-4 py-2 text-left">Total Amount</th>
 								<th className="px-4 py-2 text-left">Approval Status</th>
 								<th className="px-4 py-2 text-left">Order Date</th>
@@ -91,13 +89,8 @@ export default function AdminOrdersPage() {
 								>
 									<td className="px-4 py-2">{order.orderId}</td>
 									<td className="px-4 py-2">{order.email}</td>
-									<td className="px-4 py-2">{order.days}</td>
-									<td className="px-4 py-2">
-										{new Date(order.startingDate).toLocaleDateString()}
-									</td>
-									<td className="px-4 py-2">
-										{new Date(order.endingDate).toLocaleDateString()}
-									</td>
+									
+									
 									<td className="px-4 py-2">{order.totalAmount.toFixed(2)}</td>
 									<td className="px-4 py-2">
 										{order.status}
@@ -129,17 +122,8 @@ export default function AdminOrdersPage() {
 								<span className="font-semibold">Email:</span>{" "}
 								{activeOrder.email}
 							</p>
-							<p>
-								<span className="font-semibold">Days:</span> {activeOrder.days}
-							</p>
-							<p>
-								<span className="font-semibold">Starting Date:</span>{" "}
-								{new Date(activeOrder.startingDate).toLocaleDateString()}
-							</p>
-							<p>
-								<span className="font-semibold">Ending Date:</span>{" "}
-								{new Date(activeOrder.endingDate).toLocaleDateString()}
-							</p>
+							
+							
 							<p>
 								<span className="font-semibold">Total Amount:</span>{" "}
 								{activeOrder.totalAmount.toFixed(2)}
